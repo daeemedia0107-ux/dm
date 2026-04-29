@@ -1,0 +1,247 @@
+/* ============================================================
+   Daee Media — Color + Type Foundations
+   Editorial, grounded, high-trust. Warm paper + deep ink.
+   ============================================================ */
+
+/* ---------- Fonts ----------
+   Display:  Instrument Serif  — editorial, quiet, calm authority
+   UI/Body:  Geist             — contemporary sans, neutral, precise
+   NOTE: Roca font files were referenced but not uploaded.
+   Instrument Serif is a substitution for Roca (similar
+   high-contrast display serif feel). Flag with user.
+---------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ----- Neutrals (warm paper → deep ink) ----- */
+  --paper-50:  #FAF8F4;  /* page background, warmest */
+  --paper-100: #F4F1EA;  /* surface / cards on paper */
+  --paper-200: #E9E4D9;  /* hairline dividers on paper */
+  --paper-300: #D6CFBF;  /* muted borders */
+
+  --ink-900: #14130F;    /* primary text, near-black, warm */
+  --ink-800: #1E1C17;    /* headings on paper */
+  --ink-700: #32302A;    /* secondary text */
+  --ink-500: #6B6860;    /* tertiary / meta */
+  --ink-400: #8F8B80;    /* disabled / captions */
+  --ink-300: #B8B3A6;    /* muted fg on paper */
+
+  /* ----- Accent: Daee Olive ----- *
+   * Warm earthy green — nods subtly to Middle Eastern / Arabic
+   * heritage without being literal. Trust + calm authority.   */
+  --olive-900: #2A2E1F;
+  --olive-700: #434A2F;
+  --olive-600: #556040;  /* primary accent */
+  --olive-500: #6B7850;
+  --olive-300: #A8B189;
+  --olive-100: #E3E5D4;
+  --olive-50:  #F1F2E4;
+
+  /* ----- Support accent: Terracotta (sparingly) ----- */
+  --clay-600: #8A4B2E;
+  --clay-400: #B47250;
+  --clay-100: #F0DFD3;
+
+  /* ----- Semantic tokens ----- */
+  --bg:            var(--paper-50);
+  --bg-elevated:   #FFFFFF;
+  --bg-subtle:     var(--paper-100);
+  --bg-inverse:    var(--ink-900);
+
+  --fg:            var(--ink-900);
+  --fg-muted:      var(--ink-700);
+  --fg-subtle:     var(--ink-500);
+  --fg-faint:      var(--ink-400);
+  --fg-inverse:    var(--paper-50);
+
+  --border:        var(--paper-200);
+  --border-strong: var(--paper-300);
+  --border-ink:    var(--ink-900);
+
+  --accent:        var(--olive-600);
+  --accent-hover:  var(--olive-700);
+  --accent-fg:     var(--paper-50);
+  --accent-subtle: var(--olive-100);
+
+  /* ----- Type families ----- */
+  --font-display: 'Instrument Serif', 'Roca', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ----- Type scale (modular, editorial) ----- */
+  --fs-display:  clamp(56px, 8vw, 120px);   /* hero moments */
+  --fs-h1:       clamp(40px, 5vw, 72px);    /* page title */
+  --fs-h2:       clamp(32px, 3.5vw, 48px);  /* section */
+  --fs-h3:       28px;
+  --fs-h4:       22px;
+  --fs-lead:     20px;                      /* intro paragraphs */
+  --fs-body:     17px;
+  --fs-small:    15px;
+  --fs-caption:  13px;
+  --fs-eyebrow:  12px;                      /* ALL CAPS labels */
+
+  /* ----- Line heights ----- */
+  --lh-display: 0.95;
+  --lh-heading: 1.08;
+  --lh-body:    1.55;
+  --lh-tight:   1.25;
+
+  /* ----- Tracking ----- */
+  --tr-display: -0.02em;
+  --tr-heading: -0.015em;
+  --tr-body:    0;
+  --tr-eyebrow: 0.14em;
+
+  /* ----- Spacing scale (4-based, for layouts) ----- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+  --space-10: 64px;
+  --space-12: 96px;
+  --space-14: 128px;
+  --space-16: 192px;
+
+  /* ----- Radii (restrained, editorial) ----- */
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-pill: 999px;
+
+  /* ----- Shadows (soft, paper-like) ----- */
+  --shadow-xs: 0 1px 0 rgba(20,19,15,0.04);
+  --shadow-sm: 0 1px 2px rgba(20,19,15,0.06), 0 0 0 1px rgba(20,19,15,0.03);
+  --shadow-md: 0 8px 24px -8px rgba(20,19,15,0.12), 0 0 0 1px rgba(20,19,15,0.04);
+  --shadow-lg: 0 24px 48px -16px rgba(20,19,15,0.18);
+
+  /* ----- Motion ----- */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   120ms;
+  --dur-base:   220ms;
+  --dur-slow:   400ms;
+
+  /* ----- Layout ----- */
+  --container:     1200px;
+  --container-text: 720px;  /* long-form reading width */
+  --gutter:        24px;
+}
+
+/* ============================================================
+   Semantic typography — map HTML to the scale
+   ============================================================ */
+
+html { font-family: var(--font-sans); color: var(--fg); background: var(--bg); }
+body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.display,
+h1.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 400;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 400;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 400;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-heading);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+h4 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-tight);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+}
+
+p {
+  max-width: var(--container-text);
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+  font-weight: 500;
+  color: var(--fg-subtle);
+}
+
+.caption {
+  font-size: var(--fs-caption);
+  color: var(--fg-subtle);
+  line-height: 1.4;
+}
+
+small, .small { font-size: var(--fs-small); color: var(--fg-muted); }
+
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--border-strong);
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+a:hover { text-decoration-color: var(--fg); }
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-8) 0;
+}
+
+::selection { background: var(--olive-100); color: var(--ink-900); }
