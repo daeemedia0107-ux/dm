@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Daee Media — Revenue systems, not ad management</title>
+  <link rel="stylesheet" href="colors_and_type.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--fg); overflow-x: hidden; }
+    #root { min-height: 100vh; }
+    /* accent variants */
+    body[data-accent="olive"] { --accent: #556040; --accent-hover: #434A2F; --accent-subtle: #E3E5D4; }
+    body[data-accent="clay"]  { --accent: #8A4B2E; --accent-hover: #6F3B23; --accent-subtle: #F0DFD3; }
+    body[data-accent="ink"]   { --accent: #14130F; --accent-hover: #000; --accent-subtle: #E9E4D9; }
+    body[data-accent="moss"]  { --accent: #3F5345; --accent-hover: #2F3F34; --accent-subtle: #D9E2DB; }
+
+    /* display font variants */
+    body[data-display="fraunces"]   { --font-display: 'Fraunces', 'Instrument Serif', Georgia, serif; }
+    body[data-display="eb"]         { --font-display: 'EB Garamond', 'Instrument Serif', Georgia, serif; }
+
+    /* dark editorial mode */
+    body[data-dark="true"] {
+      --bg: #1A1814;
+      --bg-elevated: #242018;
+      --bg-subtle: #221E17;
+      --fg: #F4F1EA;
+      --fg-muted: #D6CFBF;
+      --fg-subtle: #A39E91;
+      --fg-faint: #6B6860;
+      --border: #2D2920;
+      --border-strong: #3A3528;
+      --paper-50: #1A1814;
+      --paper-100: #221E17;
+      --paper-200: #2D2920;
+      --paper-300: #3A3528;
+      --ink-900: #F4F1EA;
+    }
+    body[data-dark="true"] ::selection { background: var(--accent-subtle); color: var(--fg); }
+
+    /* smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Hide scrollbar chrome in the preview */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+
+    /* Responsive — collapse 2-col grids on narrow */
+    @media (max-width: 920px) {
+      section [style*="grid-template-columns: 1fr 1.35fr"],
+      section [style*="grid-template-columns: 1.35fr 1fr"],
+      section [style*="grid-template-columns: 1fr 1.6fr"],
+      section [style*="grid-template-columns: 1.6fr 1fr"],
+      section [style*="grid-template-columns: 1fr 1.25fr"],
+      section [style*="grid-template-columns: 1.25fr 1fr"],
+      section [style*="grid-template-columns: 1.1fr 1fr"],
+      section [style*="grid-template-columns: 1.2fr 1fr"],
+      section [style*="grid-template-columns: 380px 1fr"],
+      section [style*="grid-template-columns: 200px 1fr"],
+      section [style*="grid-template-columns: 1fr 1.3fr"],
+      section [style*="grid-template-columns: 1fr 2fr"],
+      section [style*="grid-template-columns: 360px 1fr"],
+      section [style*="grid-template-columns: 420px 1fr"],
+      section [style*="grid-template-columns: 120px 1fr 1fr auto"] {
+        grid-template-columns: 1fr !important;
+        gap: 48px !important;
+      }
+    }
+  </style>
+</head>
+<body data-accent="olive" data-display="instrument" data-dark="false" data-glyph="subtle">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="src/Primitives.jsx"></script>
+  <script type="text/babel" src="src/Nav.jsx"></script>
+  <script type="text/babel" src="src/Hero.jsx"></script>
+  <script type="text/babel" src="src/Services.jsx"></script>
+  <script type="text/babel" src="src/Philosophy.jsx"></script>
+  <script type="text/babel" src="src/CaseStudy.jsx"></script>
+  <script type="text/babel" src="src/CaseStudyDetail.jsx"></script>
+  <script type="text/babel" src="src/ProteinPalsCase.jsx"></script>
+  <script type="text/babel" src="src/Founder.jsx"></script>
+  <script type="text/babel" src="src/Apply.jsx"></script>
+  <script type="text/babel" src="src/Footer.jsx"></script>
+  <script type="text/babel" src="src/Tweaks.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accent": "olive",
+      "hero": "editorial",
+      "services": "list",
+      "display": "instrument",
+      "dark": false,
+      "glyph": "prominent"
+    }/*EDITMODE-END*/;
+
+    function App() {
+      const [tweaks, setTweaks] = useState(() => {
+        try {
+          const s = localStorage.getItem('daee.tweaks');
+          return s ? { ...TWEAK_DEFAULTS, ...JSON.parse(s) } : TWEAK_DEFAULTS;
+        } catch { return TWEAK_DEFAULTS; }
+      });
+      const [page, setPage] = useState(() => {
+        try {
+          return JSON.parse(localStorage.getItem('daee.page') || '{"page":"home"}');
+        } catch { return { page: 'home' }; }
+      });
+
+      useEffect(() => {
+        document.body.dataset.accent = tweaks.accent;
+        document.body.dataset.display = tweaks.display;
+        document.body.dataset.dark = tweaks.dark ? 'true' : 'false';
+        document.body.dataset.glyph = tweaks.glyph;
+        try { localStorage.setItem('daee.tweaks', JSON.stringify(tweaks)); } catch {}
+      }, [tweaks]);
+
+      useEffect(() => {
+        try { localStorage.setItem('daee.page', JSON.stringify(page)); } catch {}
+      }, [page]);
+
+      const setTweak = (k, v) => setTweaks(t => ({ ...t, [k]: v }));
+
+      const nav = (p, anchor, detailId) => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        setPage({ page: p, detailId });
+        if (anchor) {
+          setTimeout(() => {
+            document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 80);
+        }
+      };
+
+      const openCase = (id) => {
+        if (id === 'index') nav('case');
+        else nav('detail', null, id);
+      };
+
+      const goApply = () => {
+        if (page.page !== 'home') nav('home', 'apply');
+        else document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      const goWork = () => {
+        if (page.page !== 'home') nav('home', 'case');
+        else document.getElementById('case')?.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      return (
+        <>
+          <Nav currentPage={page.page} onNav={nav}/>
+          {page.page === 'home' && (
+            <>
+              <Hero variant={tweaks.hero} onApply={goApply} onWork={goWork}/>
+              <Services variant={tweaks.services === 'grid' ? 'grid' : 'list'}/>
+              <Philosophy/>
+              <CaseStudyTeaser onOpen={openCase}/>
+              <Founder/>
+              <Apply/>
+            </>
+          )}
+          {page.page === 'case' && (
+            <CaseStudyIndex onOpen={openCase}/>
+          )}
+          {page.page === 'detail' && page.detailId === 'protein-pals' && (
+            <ProteinPalsCase onBack={() => nav('case')} onApply={goApply}/>
+          )}
+          {page.page === 'detail' && page.detailId !== 'protein-pals' && (
+            <CaseStudyDetail id={page.detailId || 'mirror'} onBack={() => nav('case')}/>
+          )}
+          <Footer onNav={nav}/>
+          <TweaksPanel values={tweaks} onChange={setTweak}/>
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
