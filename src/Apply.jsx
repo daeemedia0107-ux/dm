@@ -8,6 +8,8 @@ function Apply() {
   });
   const [touched, setTouched] = useStateApply({});
   const [submitted, setSubmitted] = useStateApply(false);
+  const [submitting, setSubmitting] = useStateApply(false);
+  const [error, setError] = useStateApply(null);
   const [step, setStep] = useStateApply(1);
 
   const upd = k => e => setForm({ ...form, [k]: e.target.value });
@@ -28,7 +30,28 @@ function Apply() {
     form.revenue && form.services.length > 0 && form.context.trim().length > 20
   ), [form]);
 
-  const submit = e => { e.preventDefault(); if (step2Valid) setSubmitted(true); };
+  const submit = async e => {
+    e.preventDefault();
+    if (!step2Valid) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const response = await fetch('https://formspree.io/f/mykogawp', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <Section id="apply" pad={140} topRule>
@@ -152,13 +175,16 @@ function Apply() {
                       placeholder="A revenue system that produces predictable qualified consults for our high-ticket offer — we're doing ~$80k/mo and want to clear $250k without doubling headcount..."/>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10, gap: 12, flexWrap: 'wrap' }}>
-                      <button type="button" onClick={() => setStep(1)} style={{
+                      <button type="button" onClick={() => setStep(1)} disabled={submitting} style={{
                         background: 'transparent', border: 0, fontSize: 13, color: 'var(--fg-subtle)',
-                        cursor: 'pointer', padding: 0, textDecoration: 'underline', textUnderlineOffset: 3,
+                        cursor: submitting ? 'not-allowed' : 'pointer', padding: 0, textDecoration: 'underline', textUnderlineOffset: 3,
                       }}>← Back</button>
-                      <Button type="submit" style={{
-                        opacity: step2Valid ? 1 : 0.5, pointerEvents: step2Valid ? 'auto' : 'none',
-                      }}>Send application <span aria-hidden>→</span></Button>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        {error && <span style={{ fontSize: 13, color: 'var(--clay-600)' }}>{error}</span>}
+                        <Button type="submit" disabled={!step2Valid || submitting} style={{
+                          opacity: (step2Valid && !submitting) ? 1 : 0.5, pointerEvents: (step2Valid && !submitting) ? 'auto' : 'none',
+                        }}>{submitting ? 'Sending...' : 'Send application'} <span aria-hidden>→</span></Button>
+                      </div>
                     </div>
                   </>
                 )}
