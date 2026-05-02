@@ -50,9 +50,7 @@ function Services({ variant }) {
                 fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4.4vw, 56px)',
                 lineHeight: 1.05, letterSpacing: '-0.02em', margin: '20px 0 0',
                 color: 'var(--fg)', fontWeight: 400,
-              }}>
-                {title}
-              </h2>
+              }} dangerouslySetInnerHTML={{ __html: title.replace('One system.', '<br/><em style="font-style: italic; color: var(--olive-600);">One system.</em>') }} />
             </div>
             <p style={{
               fontSize: 18, lineHeight: 1.6, color: 'var(--fg-muted)',

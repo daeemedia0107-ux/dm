@@ -122,7 +122,7 @@ function HeroEditorial({ onApply, onWork }) {
           </div>
 
           <Reveal delay={200}>
-            <FounderCard/>
+            <FounderCard image={content.image} />
           </Reveal>
         </div>
 
@@ -156,7 +156,7 @@ function ProofStat({ num, label }) {
   );
 }
 
-function FounderCard() {
+function FounderCard({ image }) {
   return (
     <figure style={{ margin: 0, position: 'relative' }}>
       <div style={{
@@ -164,28 +164,32 @@ function FounderCard() {
         border: '1px solid var(--border)', borderRadius: 2,
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* Editorial portrait placeholder — duotone feel */}
-        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-          <defs>
-            <radialGradient id="lightgrad" cx="55%" cy="35%" r="60%">
-              <stop offset="0%" stopColor="var(--paper-50)" stopOpacity="1"/>
-              <stop offset="100%" stopColor="var(--paper-200)" stopOpacity="1"/>
-            </radialGradient>
-            <linearGradient id="portraitShadow" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stopColor="var(--ink-800)" stopOpacity="0.0"/>
-              <stop offset="1" stopColor="var(--ink-800)" stopOpacity="0.25"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="500" fill="url(#lightgrad)"/>
-          {/* Stylized figure silhouette */}
-          <g fill="var(--ink-800)" opacity="0.72">
-            <ellipse cx="200" cy="180" rx="62" ry="72"/>
-            <path d="M 80 500 C 80 360 140 290 200 290 C 260 290 320 360 320 500 Z"/>
-          </g>
-          {/* Subtle collar highlight */}
-          <path d="M 135 360 C 170 340 230 340 265 360 L 240 410 L 200 380 L 160 410 Z" fill="var(--paper-50)" opacity="0.6"/>
-          <rect width="400" height="500" fill="url(#portraitShadow)"/>
-        </svg>
+        {image ? (
+          <img src={image} alt="Founder" style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover'
+          }} />
+        ) : (
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+            <defs>
+              <radialGradient id="lightgrad" cx="55%" cy="35%" r="60%">
+                <stop offset="0%" stopColor="var(--paper-50)" stopOpacity="1"/>
+                <stop offset="100%" stopColor="var(--paper-200)" stopOpacity="1"/>
+              </radialGradient>
+              <linearGradient id="portraitShadow" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stopColor="var(--ink-800)" stopOpacity="0.0"/>
+                <stop offset="1" stopColor="var(--ink-800)" stopOpacity="0.25"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#lightgrad)"/>
+            <g fill="var(--ink-800)" opacity="0.72">
+              <ellipse cx="200" cy="180" rx="62" ry="72"/>
+              <path d="M 80 500 C 80 360 140 290 200 290 C 260 290 320 360 320 500 Z"/>
+            </g>
+            <path d="M 135 360 C 170 340 230 340 265 360 L 240 410 L 200 380 L 160 410 Z" fill="var(--paper-50)" opacity="0.6"/>
+            <rect width="400" height="500" fill="url(#portraitShadow)"/>
+          </svg>
+        )}
 
         <div style={{
           position: 'absolute', inset: 0, padding: 20,

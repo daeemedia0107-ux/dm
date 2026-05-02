@@ -39,6 +39,13 @@ collections:
               - { label: "Subhead", name: "subhead", widget: "text" }
               - { label: "Primary button", name: "primaryCta", widget: "string" }
               - { label: "Secondary button", name: "secondaryCta", widget: "string" }
+              - { label: "Hero Image (800x1000px JPG/WebP)", name: "image", widget: "image", required: false }
+              - label: "Hero Metrics"
+                name: "proof"
+                widget: "list"
+                fields:
+                  - { label: "Metric Key (e.g. 38%)", name: "k", widget: "string" }
+                  - { label: "Metric Label", name: "v", widget: "string" }
 
           - label: "Services"
             name: "services"
@@ -56,14 +63,18 @@ collections:
                   - { label: "Body", name: "body", widget: "text" }
                   - { label: "Outcomes (tags)", name: "outcomes", widget: "list", field: { label: "Outcome", name: "outcome", widget: "string" } }
 
-          - label: "Footer"
-            name: "footer"
+          - label: "Founder"
+            name: "founder"
             widget: "object"
             fields:
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Location", name: "location", widget: "string" }
-              - { label: "Copyright line", name: "copyright", widget: "string" }
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Founder Portrait (800x1000px JPG/WebP)", name: "image", widget: "image", required: false }
+              - label: "Bio Paragraphs"
+                name: "bio"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
 
           - label: "Case studies — list"
             name: "caseStudies"
@@ -78,15 +89,39 @@ collections:
                 fields:
                   - { label: "ID (slug)", name: "id", widget: "string" }
                   - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Thumbnail Image (800x1200px Portrait JPG)", name: "image", widget: "image", required: false }
                   - { label: "Client", name: "client", widget: "string" }
                   - { label: "Sector", name: "sector", widget: "string" }
-                  - { label: "Year / dates", name: "year", widget: "string" }
-                  - { label: "Headline", name: "headline", widget: "text" }
+                  - { label: "Problem", name: "problem", widget: "string" }
+                  - { label: "Insight", name: "insight", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
                   - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" } }
                   - label: "Metrics"
                     name: "metrics"
                     widget: "list"
                     fields:
-                      - { label: "Big number (k)", name: "k", widget: "string" }
-                      - { label: "Caption (v)", name: "v", widget: "string" }
-                  - { label: "Has detail page?", name: "hasDetailPage", widget: "boolean", default: false }
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Before", name: "before", widget: "string" }
+                      - { label: "After", name: "after", widget: "string" }
+                      - { label: "Delta", name: "delta", widget: "string" }
+
+          - label: "Protein Pals Case Study"
+            name: "proteinPals"
+            widget: "object"
+            fields:
+              - label: "WhatsApp Screenshots"
+                name: "screenshots"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Screenshot Image", name: "image", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Copyright line", name: "copyright", widget: "string" }

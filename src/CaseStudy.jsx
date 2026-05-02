@@ -1,84 +1,27 @@
 /* global React, Container, Section, Eyebrow, Tag, Button, Reveal */
 
-const caseStudies = [
-  {
-    id: 'protein-pals',
-    num: '04',
-    client: 'Protein Pals',
-    sector: 'Meal delivery · India',
-    tags: ['Meal delivery', 'Full system', 'Meta Ads + CRM'],
-    problem: 'They had 15 subscribers.',
-    insight: 'Then 240 — at 98.67% lead quality.',
-    body: "A meal delivery startup stuck on the engine. We rebuilt the funnel end-to-end — Meta Ads, ManyChat qualification, Zoho CRM, Conversion API feedback loop. 1,942 leads across 10 months. The founder eventually asked us to pause the campaign because the kitchen couldn't keep up.",
-    metrics: [
-      { label: 'Leads generated', before: '0', after: '1,942', delta: '10 mo' },
-      { label: 'Pre-qualified rate', before: 'n/a', after: '98.67%', delta: '+98pts' },
-      { label: 'Active subscribers', before: '15', after: '240', delta: '+1500%' },
-    ],
-  },
-  {
-    id: 'mirror',
-    num: '01',
-    client: 'Mirror Mental Health',
-    sector: 'Mental health · US',
-    tags: ['Mental health', 'Funnel rebuild', 'High-trust'],
-    problem: 'They didn\'t have a lead problem.',
-    insight: 'They had a system problem.',
-    body: "Their ads worked — on paper. Leads came in, dropped into a CRM nobody opened, and sat there while the sales team chased Instagram DMs. We rebuilt the funnel end-to-end — landing path, CRM routing, tracking, creative loop. Sales started picking from a queue instead of chasing.",
-    metrics: [
-      { label: 'Cost per booked consult', before: '$184', after: '$114', delta: '−38%' },
-      { label: 'Monthly qualified leads', before: '47', after: '112', delta: '+138%' },
-      { label: 'Sales team utilization', before: '42%', after: '81%', delta: '+39pts' },
-    ],
-  },
-  {
-    id: 'north',
-    num: '02',
-    client: 'Northbank Advisory',
-    sector: 'Financial advisory · UK',
-    tags: ['Financial advisory', 'Lead gen', 'Creative'],
-    problem: 'The offer was strong.',
-    insight: 'The positioning was quiet.',
-    body: 'We repositioned the advisory around the one client outcome that actually mattered and rebuilt the entire inbound system to match. New creative. New qualification. Fewer leads — and a much higher close rate.',
-    metrics: [
-      { label: 'Close rate', before: '11%', after: '27%', delta: '+16pts' },
-      { label: 'Cost per qualified lead', before: '£420', after: '£188', delta: '−55%' },
-    ],
-  },
-  {
-    id: 'atelier',
-    num: '03',
-    client: 'Atelier Wellness',
-    sector: 'Wellness · India',
-    tags: ['Wellness', 'Creative direction', 'Organic'],
-    problem: 'Instagram was busy.',
-    insight: 'The business wasn\'t.',
-    body: 'High follower count, low revenue. We rebuilt the creative system around an offer structure the audience could actually buy into. Organic became the feeder for a paid system that closed.',
-    metrics: [
-      { label: 'Monthly bookings', before: '34', after: '96', delta: '+182%' },
-      { label: 'Revenue per follower', before: '₹4.2', after: '₹18.6', delta: '+343%' },
-    ],
-  },
-];
-
 function CaseStudyIndex({ onOpen }) {
+  const content = window.CMS_CONTENT?.caseStudies || {};
+  const caseStudies = content.items || [];
+  const eyebrow = content.indexEyebrow || "Selected work";
+  const title = content.indexTitle || "The work, as it happened.";
+  const intro = content.indexIntro || "Numbers are illustrative of category; specifics are anonymized where partners asked us to.";
+
   return (
     <Section id="case" pad={140} topRule>
       <Container>
         <Reveal>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
             <div>
-              <Eyebrow>§ Case studies</Eyebrow>
+              <Eyebrow>§ {eyebrow}</Eyebrow>
               <h2 style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(44px, 5.2vw, 72px)', lineHeight: 1.02,
                 letterSpacing: '-0.02em', margin: '16px 0 0', fontWeight: 400,
-              }}>
-                The work, <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>as it happened.</em>
-              </h2>
+              }} dangerouslySetInnerHTML={{ __html: title.replace('as it happened.', '<em style="font-style: italic; color: var(--accent);">as it happened.</em>') }} />
             </div>
             <p style={{ fontSize: 15, color: 'var(--fg-muted)', maxWidth: 340, margin: 0, lineHeight: 1.55 }}>
-              Numbers are illustrative of category; specifics are anonymized where partners asked us to.
+              {intro}
             </p>
           </div>
         </Reveal>
@@ -100,7 +43,7 @@ function CaseCard({ c, onOpen, primary }) {
       onClick={() => onOpen(c.id)}
       onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
-        display: 'grid', gridTemplateColumns: '120px 1fr 1fr auto',
+        display: 'grid', gridTemplateColumns: c.image ? '120px 140px 1fr 1fr auto' : '120px 1fr 1fr auto',
         gap: 48, alignItems: 'start',
         padding: primary ? '56px 0' : '44px 0',
         borderTop: '1px solid var(--border-strong)',
@@ -114,6 +57,14 @@ function CaseCard({ c, onOpen, primary }) {
           {c.sector}
         </div>
       </div>
+      {c.image && (
+        <div style={{
+          aspectRatio: '4/5', background: 'var(--ink-800)',
+          borderRadius: 4, overflow: 'hidden', border: '1px solid var(--border)'
+        }}>
+          <img src={c.image} alt={c.client} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
+      )}
       <div>
         <h3 style={{
           fontFamily: 'var(--font-display)', fontSize: primary ? 44 : 34,
@@ -123,7 +74,7 @@ function CaseCard({ c, onOpen, primary }) {
           <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{c.insight}</em>
         </h3>
         <div style={{ display: 'flex', gap: 8, marginTop: 20, flexWrap: 'wrap' }}>
-          {c.tags.map(t => <Tag key={t}>{t}</Tag>)}
+          {c.tags && c.tags.map(t => <Tag key={t}>{t}</Tag>)}
         </div>
       </div>
       <div>
@@ -131,7 +82,7 @@ function CaseCard({ c, onOpen, primary }) {
           {c.client}
         </div>
         <div style={{ display: 'grid', gap: 16 }}>
-          {c.metrics.slice(0, 2).map(m => (
+          {c.metrics && c.metrics.slice(0, 2).map(m => (
             <div key={m.label}>
               <div style={{ fontSize: 11, color: 'var(--fg-subtle)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>
                 {m.label}

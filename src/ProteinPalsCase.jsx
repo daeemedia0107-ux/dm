@@ -232,15 +232,28 @@ function ProteinPalsCase({ onBack, onApply }) {
 
                 <BackendStack/>
 
-                <PullQuote>
-                  45 new subscriptions in less than 15 days 💪📈📈📈
-                  <span>— Saad, Daee Media · 13 July 2025</span>
-                </PullQuote>
+                {window.CMS_CONTENT?.proteinPals?.screenshots?.length > 0 ? (
+                  <div style={{ display: 'grid', gap: 24, margin: '40px 0' }}>
+                    {window.CMS_CONTENT.proteinPals.screenshots.map((s, i) => (
+                      <figure key={i} style={{ margin: 0 }}>
+                        <img src={s.image} alt="WhatsApp Proof" style={{ width: '100%', borderRadius: 8, border: '1px solid var(--border)' }} />
+                        {s.caption && <figcaption style={{ fontSize: 13, color: 'var(--fg-subtle)', marginTop: 12 }}>{s.caption}</figcaption>}
+                      </figure>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <PullQuote>
+                      45 new subscriptions in less than 15 days 💪📈📈📈
+                      <span>— Saad, Daee Media · 13 July 2025</span>
+                    </PullQuote>
 
-                <PullQuote>
-                  Haha thank you so much Saad bhai — credit goes to you bro! Abhi to shuru kia hai.
-                  <span>— Rohan, Co-founder, Protein Pals · 13 July 2025</span>
-                </PullQuote>
+                    <PullQuote>
+                      Haha thank you so much Saad bhai — credit goes to you bro! Abhi to shuru kia hai.
+                      <span>— Rohan, Co-founder, Protein Pals · 13 July 2025</span>
+                    </PullQuote>
+                  </>
+                )}
 
                 <h3 style={ppH3}>The creative strategy</h3>
                 <p style={ppP}>
