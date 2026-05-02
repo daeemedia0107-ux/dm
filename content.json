@@ -1,0 +1,137 @@
+{
+  "_README": "Edit this file to change website copy. Open on GitHub, click the pencil icon, change text inside the quotes, commit. Site rebuilds automatically. Keep the quotes and commas exactly as they are. To add a case study, copy a block in 'caseStudies' and change the fields.",
+
+  "brand": {
+    "name": "Daee Media",
+    "tagline": "Revenue systems, not ad management"
+  },
+
+  "nav": {
+    "links": [
+      { "label": "Work",     "target": "case" },
+      { "label": "Services", "target": "#services" },
+      { "label": "Approach", "target": "#philosophy" },
+      { "label": "Founder",  "target": "#founder" }
+    ],
+    "ctaLabel": "Apply"
+  },
+
+  "hero": {
+    "eyebrow": "Vol. I — Revenue Systems Quarterly",
+    "headlineLines": [
+      "We don't",
+      "run ads.",
+      "We build systems",
+      "that earn revenue."
+    ],
+    "subhead": "A founder-led agency for service businesses that deserve to grow. Meta Ads, funnels, CRM, creative direction — treated as one compounding system, not line items on separate retainers.",
+    "primaryCta": "Apply to work with us",
+    "secondaryCta": "See selected work",
+    "proof": [
+      { "k": "98.67%", "v": "lead quality rate" },
+      { "k": "$1.28",  "v": "best CPL achieved" },
+      { "k": "12×",    "v": "subscriber growth" }
+    ]
+  },
+
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Six disciplines, one compounding system.",
+    "intro": "Most agencies sell you a service. We sell you a system that gets sharper every month — because the disciplines feed each other.",
+    "items": [
+      {
+        "num": "01",
+        "title": "Meta Ads",
+        "body": "Built around your funnel and your offer — not someone else's template. Creative loops, targeting and measurement, rebuilt monthly.",
+        "outcomes": ["Creative testing", "Audience architecture", "Measurement"]
+      },
+      {
+        "num": "02",
+        "title": "Creative direction",
+        "body": "Ads and organic content that sound like you and convert like us. Written, scripted and art-directed against the system — not content for content's sake.",
+        "outcomes": ["Ad creative", "Organic content", "Art direction"]
+      },
+      {
+        "num": "03",
+        "title": "Lead generation systems",
+        "body": "Forms, nurture, qualification. Set up so your sales team stops chasing cold leads and starts picking from a queue of warm ones.",
+        "outcomes": ["Qualification logic", "Nurture sequences", "Hand-off"]
+      },
+      {
+        "num": "04",
+        "title": "CRM & automation",
+        "body": "The invisible machinery behind the revenue. If you can't see the system, you can't improve it — and most teams can't see it.",
+        "outcomes": ["Pipeline design", "Routing", "Automation"]
+      },
+      {
+        "num": "05",
+        "title": "Tracking & attribution",
+        "body": "First-party, event-based, honest. Attribution that reflects how revenue actually moves — not what a platform tells you to believe.",
+        "outcomes": ["First-party events", "Server-side", "Reporting"]
+      }
+    ]
+  },
+
+  "philosophy": {
+    "eyebrow": "Approach",
+    "title": "We work with founders who already know what they're doing.",
+    "body": [
+      "We don't take retainers from companies that don't have product–market fit, can't service the leads they get, or want a vendor to ride. The system only compounds for operators who already have a real business and want it to grow without breaking.",
+      "If that's you, the work is plain: we sit beside the team, build the revenue infrastructure, run the spend, and own a number. We tune monthly. We replace ourselves with documentation, not lock-in."
+    ]
+  },
+
+  "founder": {
+    "eyebrow": "The Founder",
+    "name": "Saad Maniyar",
+    "role": "Founder & systems lead",
+    "bio": [
+      "Saad started Daee after running growth for D2C and B2B brands across India and the Gulf — long enough to see the same patterns break the same companies. The studio is his answer to it.",
+      "He spends his time inside the work — running ad accounts, building CRM logic, writing the brief, reviewing creative. The agency model where the founder pitches and disappears doesn't run here."
+    ]
+  },
+
+  "apply": {
+    "eyebrow": "Apply",
+    "title": "Tell us about your business.",
+    "intro": "We work with a small number of founders at a time. If the fit is right, we'll send a calendar link within one business day.",
+    "submitLabel": "Submit application →",
+    "successHeadline": "Application received.",
+    "successBody": "We read every one. If there's a fit, we'll be in touch within one business day."
+  },
+
+  "footer": {
+    "tagline": "Revenue systems for founders who already know what they're doing.",
+    "email": "service@daeemedia.com",
+    "location": "Working globally · Based in India",
+    "copyright": "© 2026 Daee Media. Built deliberately."
+  },
+
+  "caseStudies": {
+    "indexEyebrow": "Selected work",
+    "indexTitle": "A small, deliberate roster.",
+    "indexIntro": "We work with a handful of founders at a time — by design. Below: the cases we're allowed to share.",
+    "items": [
+      {
+        "id": "protein-pals",
+        "num": "04",
+        "client": "Protein Pals",
+        "sector": "Meal delivery · Toronto GTA",
+        "year": "May 2025 → Mar 2026",
+        "headline": "From 15 subscribers to 240 — at a 98.67% lead-quality rate.",
+        "tags": ["Meta Ads", "Creative direction", "CRM", "Lead gen"],
+        "metrics": [
+          { "k": "12×",    "v": "subscriber growth" },
+          { "k": "98.67%", "v": "lead quality rate" },
+          { "k": "$1.28",  "v": "best CPL achieved" }
+        ],
+        "hasDetailPage": true
+      }
+    ]
+  },
+
+  "proteinPals": {
+    "_note": "Long-form case study content. Heavily formatted — edit text inside quotes only.",
+    "comingSoon": false
+  }
+}

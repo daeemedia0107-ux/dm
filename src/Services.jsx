@@ -1,7 +1,7 @@
 /* global React, Container, Section, Eyebrow, Reveal */
 const { useState: useStateSvc } = React;
 
-const services = [
+const defaultServices = [
   {
     num: '01', title: 'Meta Ads',
     body: "Built around your funnel and your offer — not someone else's template. Creative loops, targeting and measurement, rebuilt monthly.",
@@ -30,6 +30,12 @@ const services = [
 ];
 
 function Services({ variant }) {
+  const content = window.CMS_CONTENT?.services || {};
+  const eyebrow = content.eyebrow || "What we do";
+  const title = content.title || "Six disciplines, one compounding system.";
+  const intro = content.intro || "Most agencies sell you a service. We sell you a system that gets sharper every month — because the disciplines feed each other.";
+  const items = content.items || defaultServices;
+
   return (
     <Section id="services" pad={140} topRule>
       <Container>
@@ -39,44 +45,41 @@ function Services({ variant }) {
             marginBottom: 80, alignItems: 'end',
           }}>
             <div>
-              <Eyebrow>§ Services</Eyebrow>
+              <Eyebrow>{eyebrow}</Eyebrow>
               <h2 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(44px, 5.2vw, 72px)', lineHeight: 1.02,
-                letterSpacing: '-0.02em', margin: '16px 0 0', fontWeight: 400,
+                fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4.4vw, 56px)',
+                lineHeight: 1.05, letterSpacing: '-0.02em', margin: '20px 0 0',
+                color: 'var(--fg)', fontWeight: 400,
               }}>
-                Six parts.<br/>
-                <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>One system.</em>
+                {title}
               </h2>
             </div>
-            <div>
-              <p style={{
-                fontSize: 19, lineHeight: 1.55, color: 'var(--fg-muted)',
-                maxWidth: 560, margin: 0,
-              }}>
-                Each of these is a component of one revenue system. Alone they leak.
-                Together they compound. We don't sell them as separate retainers —
-                and we only sign if the whole picture makes sense.
-              </p>
-            </div>
+            <p style={{
+              fontSize: 18, lineHeight: 1.6, color: 'var(--fg-muted)',
+              maxWidth: 480, margin: 0, paddingBottom: 8,
+            }}>
+              {intro}
+            </p>
           </div>
         </Reveal>
 
-        {variant === 'grid' ? <ServicesGrid /> : <ServicesEditorial />}
+        {variant === 'grid' ? <ServicesGrid items={items} /> : <ServicesEditorial items={items} />}
       </Container>
     </Section>
   );
 }
 
 /* ---------- Layout A: Numbered editorial list (default) ---------- */
-function ServicesEditorial() {
+function ServicesEditorial({ items }) {
   const [active, setActive] = useStateSvc(0);
+  const currentItem = items[active] || items[0];
+  
   return (
     <div style={{
       display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 96, alignItems: 'start',
     }}>
       <ol style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {services.map((s, i) => (
+        {items.map((s, i) => (
           <li key={s.num}
             onMouseEnter={() => setActive(i)}
             style={{
@@ -113,24 +116,26 @@ function ServicesEditorial() {
           padding: 36, borderRadius: 4,
           animation: 'fadeIn 280ms var(--ease-out)',
         }}>
-          <Eyebrow color="var(--accent)">{services[active].num} · {services[active].title}</Eyebrow>
+          <Eyebrow color="var(--accent)">{currentItem.num} · {currentItem.title}</Eyebrow>
           <p style={{
             fontFamily: 'var(--font-display)', fontSize: 26, lineHeight: 1.3,
             letterSpacing: '-0.01em', color: 'var(--fg)', margin: '20px 0 0',
             fontWeight: 400,
           }}>
-            {services[active].body}
+            {currentItem.body}
           </p>
           <div style={{
             display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 28,
             paddingTop: 24, borderTop: '1px solid var(--border)',
           }}>
-            {services[active].outcomes.map(o => (
-              <span key={o} style={{
+            {currentItem.outcomes && currentItem.outcomes.map(o => {
+              const text = typeof o === 'object' ? o.outcome : o;
+              return (
+              <span key={text} style={{
                 fontSize: 12, padding: '5px 12px', borderRadius: 999,
                 border: '1px solid var(--border-strong)', color: 'var(--fg-muted)',
-              }}>{o}</span>
-            ))}
+              }}>{text}</span>
+            )})}
           </div>
         </div>
         <p style={{
@@ -147,13 +152,13 @@ function ServicesEditorial() {
 }
 
 /* ---------- Layout B: Grid (Tweak) ---------- */
-function ServicesGrid() {
+function ServicesGrid({ items }) {
   return (
     <div style={{
       display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1,
       background: 'var(--border)', border: '1px solid var(--border)',
     }}>
-      {services.map(s => <ServiceCell key={s.num} {...s}/>)}
+      {items.map(s => <ServiceCell key={s.num} {...s}/>)}
     </div>
   );
 }
@@ -194,9 +199,11 @@ function ServiceCell({ num, title, body, outcomes }) {
         marginTop: 'auto', display: 'flex', gap: 6, flexWrap: 'wrap',
         paddingTop: 16, borderTop: '1px solid var(--border)',
       }}>
-        {outcomes.map(o => (
-          <span key={o} style={{ fontSize: 11, color: 'var(--fg-subtle)' }}>· {o}</span>
-        ))}
+        {outcomes && outcomes.map(o => {
+          const text = typeof o === 'object' ? o.outcome : o;
+          return (
+          <span key={text} style={{ fontSize: 11, color: 'var(--fg-subtle)' }}>· {text}</span>
+        )})}
       </div>
     </article>
   );

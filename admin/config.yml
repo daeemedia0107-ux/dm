@@ -1,0 +1,92 @@
+# Daee Media — CMS configuration
+# Edit website content visually at /admin
+
+backend:
+  name: git-gateway
+  branch: main   # change to "master" if your default branch is master
+
+# Where uploaded images go
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Editor UI
+display_url: https://daeemedia.com
+site_url: https://daeemedia.com
+locale: 'en'
+
+collections:
+  # ---- Single-file content ---------------------------------------------------
+  - name: "site"
+    label: "Website Content"
+    files:
+      - file: "content.json"
+        label: "Site Copy"
+        name: "site"
+        format: "json"
+        fields:
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            fields:
+              - { label: "Brand name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Subhead", name: "subhead", widget: "text" }
+              - { label: "Primary button", name: "primaryCta", widget: "string" }
+              - { label: "Secondary button", name: "secondaryCta", widget: "string" }
+
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "Service items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Number (e.g. 01)", name: "num", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Outcomes (tags)", name: "outcomes", widget: "list", field: { label: "Outcome", name: "outcome", widget: "string" } }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Copyright line", name: "copyright", widget: "string" }
+
+          - label: "Case studies — list"
+            name: "caseStudies"
+            widget: "object"
+            fields:
+              - { label: "Index eyebrow", name: "indexEyebrow", widget: "string" }
+              - { label: "Index title", name: "indexTitle", widget: "string" }
+              - { label: "Index intro", name: "indexIntro", widget: "text" }
+              - label: "Cases"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "ID (slug)", name: "id", widget: "string" }
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Client", name: "client", widget: "string" }
+                  - { label: "Sector", name: "sector", widget: "string" }
+                  - { label: "Year / dates", name: "year", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "text" }
+                  - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" } }
+                  - label: "Metrics"
+                    name: "metrics"
+                    widget: "list"
+                    fields:
+                      - { label: "Big number (k)", name: "k", widget: "string" }
+                      - { label: "Caption (v)", name: "v", widget: "string" }
+                  - { label: "Has detail page?", name: "hasDetailPage", widget: "boolean", default: false }

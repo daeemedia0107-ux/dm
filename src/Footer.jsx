@@ -1,6 +1,11 @@
 /* global React, Container */
 
 function Footer({ onNav }) {
+  const content = window.CMS_CONTENT?.footer || {};
+  const email = content.email || "hello@daeemedia.com";
+  const location = content.location || "Based in Pune, India";
+  const copyright = content.copyright || `© ${new Date().getFullYear()} Daee Media · Revenue systems, not ad management.`;
+
   return (
     <footer style={{
       background: 'var(--paper-100)', padding: '140px 0 40px',
@@ -64,8 +69,8 @@ function Footer({ onNav }) {
             { l: 'Field notes', href: '#' }, { l: 'Library', href: '#' }, { l: '@saadshares', href: '#' },
           ]}/>
           <FooterCol title="Contact" links={[
-            { l: 'hello@daeemedia.com', href: 'mailto:hello@daeemedia.com' },
-            { l: 'Based in Pune, India', href: null },
+            { l: email, href: `mailto:${email}` },
+            { l: location, href: null },
             { l: 'Apply →', to: 'home#apply' },
           ]} onNav={onNav}/>
         </div>
@@ -73,7 +78,7 @@ function Footer({ onNav }) {
           marginTop: 96, paddingTop: 28, borderTop: '1px solid var(--border)',
           fontSize: 13, color: 'var(--fg-subtle)', flexWrap: 'wrap', gap: 16,
         }}>
-          <span>© {new Date().getFullYear()} Daee Media · Revenue systems, not ad management.</span>
+          <span>{copyright}</span>
           <span><em style={{ fontFamily: 'var(--font-display)' }}>Built slowly. On purpose.</em></span>
         </div>
       </Container>

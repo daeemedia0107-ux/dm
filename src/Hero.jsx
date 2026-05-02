@@ -9,6 +9,18 @@ function Hero({ variant, onApply, onWork }) {
 
 /* ---------- Variant A: Editorial (default) ---------- */
 function HeroEditorial({ onApply, onWork }) {
+  const content = window.CMS_CONTENT?.hero || {};
+  const eyebrow = content.eyebrow || "Vol. 01 · Pune → Globally";
+  const subhead = content.subhead || "A founder-led agency for service businesses that deserve to grow. Meta Ads, funnels, CRM, creative direction — treated as one compounding system, not line items on separate retainers.";
+  const primaryCta = content.primaryCta || "Apply to work with us";
+  const secondaryCta = content.secondaryCta || "See what we built";
+  const proof = content.proof || [
+    { k: "38%", v: "Lower cost per booked consult" },
+    { k: "2.4×", v: "Qualified leads, same ad spend" },
+    { k: "14+", v: "High-trust service partners" },
+    { k: "2", v: "New partners, this quarter" }
+  ];
+
   return (
     <section id="top" style={{ position: 'relative', paddingTop: 32, paddingBottom: 96, overflow: 'hidden' }}>
       {/* Very quiet Arabic glyph watermark, bottom-right */}
@@ -26,7 +38,7 @@ function HeroEditorial({ onApply, onWork }) {
             display: 'flex', alignItems: 'center', gap: 16, paddingBottom: 40,
             borderBottom: '1px solid var(--border)', flexWrap: 'wrap',
           }}>
-            <Eyebrow>Vol. 01 · Pune → Globally</Eyebrow>
+            <Eyebrow>{eyebrow}</Eyebrow>
             <div style={{ flex: 1, minWidth: 20, height: 1, background: 'var(--border)' }}/>
             <Eyebrow>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
@@ -64,16 +76,27 @@ function HeroEditorial({ onApply, onWork }) {
                 lineHeight: 0.93, letterSpacing: '-0.025em', margin: 0,
                 fontWeight: 400, color: 'var(--fg)',
               }}>
-                We don't<br/>
-                run ads.<br/>
-                <span style={{ display: 'inline-block', position: 'relative' }}>
-                  We build&nbsp;
-                  <em style={{
-                    fontStyle: 'italic', color: 'var(--accent)',
-                    position: 'relative',
-                  }}>systems</em>
-                </span><br/>
-                that earn revenue.
+                {content.headlineLines ? (
+                  <>
+                    {content.headlineLines[0]}<br/>
+                    {content.headlineLines[1]}<br/>
+                    <span style={{ display: 'inline-block', position: 'relative' }}>
+                      {content.headlineLines[2].replace('systems', '')}
+                      <em style={{ fontStyle: 'italic', color: 'var(--accent)', position: 'relative' }}>systems</em>
+                    </span><br/>
+                    {content.headlineLines[3]}
+                  </>
+                ) : (
+                  <>
+                    We don't<br/>
+                    run ads.<br/>
+                    <span style={{ display: 'inline-block', position: 'relative' }}>
+                      We build&nbsp;
+                      <em style={{ fontStyle: 'italic', color: 'var(--accent)', position: 'relative' }}>systems</em>
+                    </span><br/>
+                    that earn revenue.
+                  </>
+                )}
               </h1>
             </Reveal>
 
@@ -82,19 +105,17 @@ function HeroEditorial({ onApply, onWork }) {
                 fontSize: 20, lineHeight: 1.55, color: 'var(--fg-muted)',
                 maxWidth: 580, marginTop: 40, marginBottom: 0,
               }}>
-                A founder-led agency for service businesses that deserve to grow.
-                Meta Ads, funnels, CRM, creative direction — treated as one
-                compounding system, not line items on separate retainers.
+                {subhead}
               </p>
             </Reveal>
 
             <Reveal delay={320}>
               <div style={{ display: 'flex', gap: 14, marginTop: 48, flexWrap: 'wrap' }}>
                 <Button size="lg" onClick={onApply}>
-                  Apply to work with us <span aria-hidden>→</span>
+                  {primaryCta} <span aria-hidden>→</span>
                 </Button>
                 <Button size="lg" variant="secondary" onClick={onWork}>
-                  See what we built
+                  {secondaryCta}
                 </Button>
               </div>
             </Reveal>
@@ -109,12 +130,11 @@ function HeroEditorial({ onApply, onWork }) {
         <Reveal delay={420}>
           <div style={{
             marginTop: 112, paddingTop: 32, borderTop: '1px solid var(--border)',
-            display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 40,
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 40,
           }}>
-            <ProofStat num="38%" label="Lower cost per booked consult" />
-            <ProofStat num="2.4×" label="Qualified leads, same ad spend" />
-            <ProofStat num="14+" label="High-trust service partners" />
-            <ProofStat num="2" label="New partners, this quarter" />
+            {proof.map((p, i) => (
+              <ProofStat key={i} num={p.k} label={p.v} />
+            ))}
           </div>
         </Reveal>
       </Container>

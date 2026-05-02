@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Daee Media — Revenue systems, not ad management</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="stylesheet" href="colors_and_type.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +185,19 @@
         </>
       );
     }
-    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    
+    // Fetch CMS content before rendering
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        window.CMS_CONTENT = data;
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+      })
+      .catch(err => {
+        console.error('Failed to load CMS content, using fallbacks', err);
+        window.CMS_CONTENT = {}; // Fallback
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+      });
   </script>
 </body>
 </html>
