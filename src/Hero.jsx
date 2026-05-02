@@ -54,7 +54,7 @@ function HeroEditorial({ onApply, onWork }) {
 
         <div style={{
           display: 'grid', gridTemplateColumns: '1.35fr 1fr',
-          gap: 64, alignItems: 'center', marginTop: 56, position: 'relative',
+          gap: 64, alignItems: 'start', marginTop: 56, position: 'relative',
         }}>
           <div>
             <Reveal delay={80}>
