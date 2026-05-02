@@ -110,7 +110,10 @@ function CaseCard({ c, onOpen, primary }) {
 
 /* ---------- Home teaser version ---------- */
 function CaseStudyTeaser({ onOpen }) {
+  const caseStudies = window.CMS_CONTENT?.caseStudies?.items || [];
   const c = caseStudies[0];
+
+  if (!c) return null;
   return (
     <Section id="case" pad={140} topRule>
       <Container>
@@ -135,7 +138,7 @@ function CaseStudyTeaser({ onOpen }) {
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 72 }}>
             <div>
               <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
-                {c.tags.map(t => <Tag key={t}>{t}</Tag>)}
+                {c.tags && c.tags.map(t => <Tag key={t}>{t}</Tag>)}
               </div>
               <h3 style={{
                 fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 3.6vw, 48px)',
@@ -154,7 +157,7 @@ function CaseStudyTeaser({ onOpen }) {
               background: 'var(--paper-100)', border: '1px solid var(--border)',
               borderRadius: 4, padding: 36, display: 'flex', flexDirection: 'column', gap: 28,
             }}>
-              {c.metrics.map(m => <Metric key={m.label} {...m}/>)}
+              {c.metrics && c.metrics.map(m => <Metric key={m.label} {...m}/>)}
               <div style={{
                 paddingTop: 20, borderTop: '1px solid var(--border)',
                 fontSize: 12, color: 'var(--fg-subtle)', lineHeight: 1.5,
