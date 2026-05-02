@@ -53,17 +53,19 @@ function Nav({ currentPage, onNav }) {
             </div>
           </a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-            {pages.slice(0, 4).map((p, i) => (
-              <NavLink key={i}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
-                  else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}>
-                {p.label}
-              </NavLink>
-            ))}
-            <span style={{ width: 1, height: 14, background: 'var(--border-strong)' }}/>
+            <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+              {pages.slice(0, 4).map((p, i) => (
+                <NavLink key={i}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
+                    else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}>
+                  {p.label}
+                </NavLink>
+              ))}
+              <span style={{ width: 1, height: 14, background: 'var(--border-strong)' }}/>
+            </div>
             <Button size="sm" onClick={goApply}>
               Apply <span aria-hidden>→</span>
             </Button>

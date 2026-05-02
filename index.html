@@ -67,10 +67,33 @@
       section [style*="grid-template-columns: 1fr 2fr"],
       section [style*="grid-template-columns: 360px 1fr"],
       section [style*="grid-template-columns: 420px 1fr"],
-      section [style*="grid-template-columns: 120px 1fr 1fr auto"] {
+      section [style*="grid-template-columns: 120px 1fr 1fr auto"],
+      section [style*="grid-template-columns: 120px 140px 1fr 1fr auto"],
+      section [style*="grid-template-columns: repeat(3, 1fr)"],
+      section [style*="grid-template-columns: repeat(3, auto)"],
+      section [style*="grid-template-columns: 72px 1fr auto"],
+      section [style*="grid-template-columns: 60px 1fr"],
+      section [style*="grid-template-columns: 1.5fr 1fr 1fr 1fr"],
+      section [style*="grid-template-columns: 80px 1fr"],
+      section [style*="grid-template-columns: 220px 1fr"],
+      section [style*="grid-template-columns: 180px 1fr"],
+      section [style*="grid-template-columns: repeat(2, 1fr)"],
+      section [style*="grid-template-columns: 32px 130px 1fr"],
+      section [style*="grid-template-columns: 1.4fr 1fr 1fr"],
+      section [style*="grid-template-columns: 110px 1fr 80px"],
+      section [style*="grid-template-columns: 2fr 1fr 1fr 1fr"],
+      footer [style*="grid-template-columns: 1.5fr 1fr 1fr 1fr"] {
         grid-template-columns: 1fr !important;
-        gap: 48px !important;
+        gap: 32px !important;
       }
+      
+      .desktop-only { display: none !important; }
+      
+      /* Scale down hero typography on mobile */
+      h1 { font-size: clamp(48px, 12vw, 64px) !important; }
+      
+      /* Make CaseCard stack properly */
+      article[style*="display: grid"] { gap: 24px !important; }
     }
   </style>
 </head>
