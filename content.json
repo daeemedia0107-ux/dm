@@ -1,9 +1,4 @@
 {
-  "_README": "Edit this file to change website copy. Open on GitHub, click the pencil icon, change text inside the quotes, commit. Site rebuilds automatically. Keep the quotes and commas exactly as they are. To add a case study, copy a block in 'caseStudies' and change the fields.",
-  "brand": {
-    "name": "Daee Media",
-    "tagline": "Revenue systems, not ad management"
-  },
   "nav": {
     "links": [
       {
@@ -24,6 +19,172 @@
       }
     ],
     "ctaLabel": "Apply"
+  },
+  "brand": {
+    "name": "Daee Media",
+    "tagline": "Revenue systems, not ad management"
+  },
+  "_README": "Edit this file to change website copy. Open on GitHub, click the pencil icon, change text inside the quotes, commit. Site rebuilds automatically. Keep the quotes and commas exactly as they are. To add a case study, copy a block in 'caseStudies' and change the fields.",
+  "apply": {
+    "eyebrow": "Apply",
+    "title": "Tell us about your business.",
+    "intro": "We work with a small number of founders at a time. If the fit is right, we'll send a calendar link within one business day.",
+    "submitLabel": "Submit application →",
+    "successHeadline": "Application received.",
+    "successBody": "We read every one. If there's a fit, we'll be in touch within one business day."
+  },
+  "founder": {
+    "eyebrow": "The Founder",
+    "name": "Mohammed Saad Shaikh",
+    "role": "Founder & systems lead",
+    "bio": [
+      "Saad started Daee after running growth for D2C and B2B brands across India and the Gulf — long enough to see the same patterns break the same companies. The studio is his answer to it.",
+      "He spends his time inside the work — running ad accounts, building CRM logic, writing the brief, reviewing creative. The agency model where the founder pitches and disappears doesn't run here."
+    ],
+    "image": ""
+  },
+  "philosophy": {
+    "eyebrow": "Approach",
+    "title": "We work with founders who already know what they're doing.",
+    "body": [
+      "We don't take retainers from companies that don't have product–market fit, can't service the leads they get, or want a vendor to ride. The system only compounds for operators who already have a real business and want it to grow without breaking.",
+      "If that's you, the work is plain: we sit beside the team, build the revenue infrastructure, run the spend, and own a number. We tune monthly. We replace ourselves with documentation, not lock-in."
+    ]
+  },
+  "caseStudies": {
+    "indexEyebrow": "Selected work",
+    "indexTitle": "A small, deliberate roster.",
+    "indexIntro": "We work with a handful of founders at a time — by design. Below: the cases we're allowed to share.",
+    "items": [
+      {
+        "body": "A meal delivery startup stuck on the engine. We rebuilt the funnel end-to-end — Meta Ads, ManyChat qualification, Zoho CRM, Conversion API feedback loop. 1,942 leads across 10 months. The founder eventually asked us to pause the campaign because the kitchen couldn't keep up.",
+        "metrics": [
+          {
+            "label": "Leads generated",
+            "before": "0",
+            "after": "1,942",
+            "delta": "10 mo"
+          },
+          {
+            "label": "Pre-qualified rate",
+            "before": "n/a",
+            "after": "98.67%",
+            "delta": "+98pts"
+          },
+          {
+            "label": "Active subscribers",
+            "before": "15",
+            "after": "240",
+            "delta": "+1500%"
+          }
+        ],
+        "sector": "Meal delivery · India",
+        "num": "04",
+        "client": "Protein Pals",
+        "insight": "Then 240 — at 98.67% lead quality.",
+        "tags": [
+          "Meal delivery",
+          "Full system",
+          "Meta Ads + CRM"
+        ],
+        "id": "protein-pals",
+        "image": "",
+        "problem": "They had 15 subscribers."
+      },
+      {
+        "body": "Their ads worked — on paper. Leads came in, dropped into a CRM nobody opened, and sat there while the sales team chased Instagram DMs. We rebuilt the funnel end-to-end — landing path, CRM routing, tracking, creative loop. Sales started picking from a queue instead of chasing.",
+        "metrics": [
+          {
+            "label": "Cost per booked consult",
+            "before": "$184",
+            "after": "$114",
+            "delta": "−38%"
+          },
+          {
+            "label": "Monthly qualified leads",
+            "before": "47",
+            "after": "112",
+            "delta": "+138%"
+          },
+          {
+            "label": "Sales team utilization",
+            "before": "42%",
+            "after": "81%",
+            "delta": "+39pts"
+          }
+        ],
+        "sector": "Mental health · US",
+        "num": "01",
+        "client": "Mirror Mental Health",
+        "insight": "They had a system problem.",
+        "tags": [
+          "Mental health",
+          "Funnel rebuild",
+          "High-trust"
+        ],
+        "id": "mirror",
+        "image": "",
+        "problem": "They didn't have a lead problem."
+      },
+      {
+        "body": "We repositioned the advisory around the one client outcome that actually mattered and rebuilt the entire inbound system to match. New creative. New qualification. Fewer leads — and a much higher close rate.",
+        "metrics": [
+          {
+            "label": "Close rate",
+            "before": "11%",
+            "after": "27%",
+            "delta": "+16pts"
+          },
+          {
+            "label": "Cost per qualified lead",
+            "before": "£420",
+            "after": "£188",
+            "delta": "−55%"
+          }
+        ],
+        "sector": "Financial advisory · UK",
+        "num": "02",
+        "client": "Northbank Advisory",
+        "insight": "The positioning was quiet.",
+        "tags": [
+          "Financial advisory",
+          "Lead gen",
+          "Creative"
+        ],
+        "id": "north",
+        "image": "",
+        "problem": "The offer was strong."
+      },
+      {
+        "body": "High follower count, low revenue. We rebuilt the creative system around an offer structure the audience could actually buy into. Organic became the feeder for a paid system that closed.",
+        "metrics": [
+          {
+            "label": "Monthly bookings",
+            "before": "34",
+            "after": "96",
+            "delta": "+182%"
+          },
+          {
+            "label": "Revenue per follower",
+            "before": "₹4.2",
+            "after": "₹18.6",
+            "delta": "+343%"
+          }
+        ],
+        "sector": "Wellness · India",
+        "num": "03",
+        "client": "Atelier Wellness",
+        "insight": "The business wasn't.",
+        "tags": [
+          "Wellness",
+          "Creative direction",
+          "Organic"
+        ],
+        "id": "atelier",
+        "image": "",
+        "problem": "Instagram was busy."
+      }
+    ]
   },
   "hero": {
     "eyebrow": "Vol. I — Revenue Systems Quarterly",
@@ -55,6 +216,17 @@
       }
     ],
     "image": ""
+  },
+  "proteinPals": {
+    "_note": "Long-form case study content. Heavily formatted — edit text inside quotes only.",
+    "comingSoon": false,
+    "screenshots": []
+  },
+  "footer": {
+    "tagline": "Revenue systems for founders who already know what they're doing.",
+    "email": "service@daeemedia.com",
+    "location": "Working globally · Based in India",
+    "copyright": "© 2026 Daee Media. Built deliberately."
   },
   "services": {
     "eyebrow": "What we do",
@@ -110,187 +282,6 @@
           "Server-side",
           "Reporting"
         ]
-      }
-    ]
-  },
-  "philosophy": {
-    "eyebrow": "Approach",
-    "title": "We work with founders who already know what they're doing.",
-    "body": [
-      "We don't take retainers from companies that don't have product–market fit, can't service the leads they get, or want a vendor to ride. The system only compounds for operators who already have a real business and want it to grow without breaking.",
-      "If that's you, the work is plain: we sit beside the team, build the revenue infrastructure, run the spend, and own a number. We tune monthly. We replace ourselves with documentation, not lock-in."
-    ]
-  },
-  "founder": {
-    "eyebrow": "The Founder",
-    "name": "Saad Maniyar",
-    "role": "Founder & systems lead",
-    "bio": [
-      "Saad started Daee after running growth for D2C and B2B brands across India and the Gulf — long enough to see the same patterns break the same companies. The studio is his answer to it.",
-      "He spends his time inside the work — running ad accounts, building CRM logic, writing the brief, reviewing creative. The agency model where the founder pitches and disappears doesn't run here."
-    ],
-    "image": ""
-  },
-  "apply": {
-    "eyebrow": "Apply",
-    "title": "Tell us about your business.",
-    "intro": "We work with a small number of founders at a time. If the fit is right, we'll send a calendar link within one business day.",
-    "submitLabel": "Submit application →",
-    "successHeadline": "Application received.",
-    "successBody": "We read every one. If there's a fit, we'll be in touch within one business day."
-  },
-  "footer": {
-    "tagline": "Revenue systems for founders who already know what they're doing.",
-    "email": "service@daeemedia.com",
-    "location": "Working globally · Based in India",
-    "copyright": "© 2026 Daee Media. Built deliberately."
-  },
-  "caseStudies": {
-    "indexEyebrow": "Selected work",
-    "indexTitle": "A small, deliberate roster.",
-    "indexIntro": "We work with a handful of founders at a time — by design. Below: the cases we're allowed to share.",
-    "items": [
-      {
-        "id": "protein-pals",
-        "num": "04",
-        "client": "Protein Pals",
-        "sector": "Meal delivery · India",
-        "tags": [
-          "Meal delivery",
-          "Full system",
-          "Meta Ads + CRM"
-        ],
-        "problem": "They had 15 subscribers.",
-        "insight": "Then 240 — at 98.67% lead quality.",
-        "body": "A meal delivery startup stuck on the engine. We rebuilt the funnel end-to-end — Meta Ads, ManyChat qualification, Zoho CRM, Conversion API feedback loop. 1,942 leads across 10 months. The founder eventually asked us to pause the campaign because the kitchen couldn't keep up.",
-        "metrics": [
-          {
-            "label": "Leads generated",
-            "before": "0",
-            "after": "1,942",
-            "delta": "10 mo"
-          },
-          {
-            "label": "Pre-qualified rate",
-            "before": "n/a",
-            "after": "98.67%",
-            "delta": "+98pts"
-          },
-          {
-            "label": "Active subscribers",
-            "before": "15",
-            "after": "240",
-            "delta": "+1500%"
-          }
-        ],
-        "image": ""
-      },
-      {
-        "id": "mirror",
-        "num": "01",
-        "client": "Mirror Mental Health",
-        "sector": "Mental health · US",
-        "tags": [
-          "Mental health",
-          "Funnel rebuild",
-          "High-trust"
-        ],
-        "problem": "They didn't have a lead problem.",
-        "insight": "They had a system problem.",
-        "body": "Their ads worked — on paper. Leads came in, dropped into a CRM nobody opened, and sat there while the sales team chased Instagram DMs. We rebuilt the funnel end-to-end — landing path, CRM routing, tracking, creative loop. Sales started picking from a queue instead of chasing.",
-        "metrics": [
-          {
-            "label": "Cost per booked consult",
-            "before": "$184",
-            "after": "$114",
-            "delta": "−38%"
-          },
-          {
-            "label": "Monthly qualified leads",
-            "before": "47",
-            "after": "112",
-            "delta": "+138%"
-          },
-          {
-            "label": "Sales team utilization",
-            "before": "42%",
-            "after": "81%",
-            "delta": "+39pts"
-          }
-        ],
-        "image": ""
-      },
-      {
-        "id": "north",
-        "num": "02",
-        "client": "Northbank Advisory",
-        "sector": "Financial advisory · UK",
-        "tags": [
-          "Financial advisory",
-          "Lead gen",
-          "Creative"
-        ],
-        "problem": "The offer was strong.",
-        "insight": "The positioning was quiet.",
-        "body": "We repositioned the advisory around the one client outcome that actually mattered and rebuilt the entire inbound system to match. New creative. New qualification. Fewer leads — and a much higher close rate.",
-        "metrics": [
-          {
-            "label": "Close rate",
-            "before": "11%",
-            "after": "27%",
-            "delta": "+16pts"
-          },
-          {
-            "label": "Cost per qualified lead",
-            "before": "£420",
-            "after": "£188",
-            "delta": "−55%"
-          }
-        ],
-        "image": ""
-      },
-      {
-        "id": "atelier",
-        "num": "03",
-        "client": "Atelier Wellness",
-        "sector": "Wellness · India",
-        "tags": [
-          "Wellness",
-          "Creative direction",
-          "Organic"
-        ],
-        "problem": "Instagram was busy.",
-        "insight": "The business wasn't.",
-        "body": "High follower count, low revenue. We rebuilt the creative system around an offer structure the audience could actually buy into. Organic became the feeder for a paid system that closed.",
-        "metrics": [
-          {
-            "label": "Monthly bookings",
-            "before": "34",
-            "after": "96",
-            "delta": "+182%"
-          },
-          {
-            "label": "Revenue per follower",
-            "before": "₹4.2",
-            "after": "₹18.6",
-            "delta": "+343%"
-          }
-        ],
-        "image": ""
-      }
-    ]
-  },
-  "proteinPals": {
-    "_note": "Long-form case study content. Heavily formatted — edit text inside quotes only.",
-    "comingSoon": false,
-    "screenshots": [
-      {
-        "image": "",
-        "caption": "Client Feedback"
-      },
-      {
-        "image": "",
-        "caption": "Results"
       }
     ]
   }
