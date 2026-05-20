@@ -285,5 +285,16 @@
         ]
       }
     ]
-  }
+  },
+  "articles": [
+    {
+      "id": "scaling-revenue-systems",
+      "title": "Scaling Revenue Systems: Beyond the Ad Account",
+      "date": "2026-05-20",
+      "description": "Why most performance marketing agencies fail when they only focus on ROAS, and how to build a compounding revenue system instead.",
+      "author": "Mohammed Saad Shaikh",
+      "image": "",
+      "body": "## The Problem with ROAS\\n\\nMost founders optimize for Return on Ad Spend (ROAS). This is a mistake.\\n\\nWhen you optimize for ROAS, you are optimizing for the first transaction. You are treating your business like a vending machine: insert money, extract lead. But real leverage comes from what happens *after* the lead drops into your CRM.\\n\\n### Building the System\\n\\nA true revenue system consists of six parts:\\n1. The Math\\n2. The Brand\\n3. The Funnel\\n4. The Ads\\n5. The Follow-up\\n6. The Economics\\n\\nWhen these six parts align, growth stops being a lucky break and starts being an engineering equation."
+    }
+  ]
 }

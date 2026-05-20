@@ -20,11 +20,11 @@ function Nav({ currentPage, onNav }) {
   }, [menuOpen]);
 
   const pages = [
-    { id: 'home', label: 'Work', anchor: '#case' },
+    { id: 'case', label: 'Case Studies', anchor: null },
+    { id: 'articles', label: 'Articles', anchor: null },
     { id: 'home', label: 'Services', anchor: '#services' },
     { id: 'home', label: 'Philosophy', anchor: '#philosophy' },
     { id: 'home', label: 'About', anchor: '#about' },
-    { id: 'case', label: 'Case study', anchor: null },
   ];
 
   const goApply = () => {
@@ -63,7 +63,7 @@ function Nav({ currentPage, onNav }) {
           </a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-              {pages.slice(0, 4).map((p, i) => (
+              {pages.map((p, i) => (
                 <NavLink key={i}
                   onClick={(e) => {
                     e.preventDefault();
@@ -105,7 +105,7 @@ function Nav({ currentPage, onNav }) {
           padding: '120px 24px 40px', boxSizing: 'border-box',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 32, fontSize: 24 }}>
-            {pages.slice(0, 4).map((p, i) => (
+            {pages.map((p, i) => (
               <a key={i} href="#" onClick={(e) => {
                 e.preventDefault();
                 setMenuOpen(false);

@@ -125,3 +125,16 @@ collections:
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Copyright line", name: "copyright", widget: "string" }
+
+          - label: "Articles / Blog"
+            name: "articles"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "URL Slug", name: "id", widget: "string", hint: "e.g. how-we-scale-agencies" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", picker_utc: false }
+              - { label: "SEO Description", name: "description", widget: "text", hint: "Used for search engines and article previews." }
+              - { label: "Cover Image", name: "image", widget: "image", required: false }
+              - { label: "Author", name: "author", widget: "string", default: "Daee Media" }
+              - { label: "Content", name: "body", widget: "markdown" }
