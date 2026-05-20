@@ -69,6 +69,8 @@
     ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
 
     /* Responsive — collapse 2-col grids on narrow */
+    .mobile-only, .mobile-flex-only { display: none !important; }
+
     @media (max-width: 920px) {
       section [style*="grid-template-columns: 1fr 1.35fr"],
       section [style*="grid-template-columns: 1.35fr 1fr"],
@@ -105,6 +107,7 @@
       }
       
       .desktop-only { display: none !important; }
+      .mobile-only, .mobile-flex-only { display: flex !important; }
       
       /* Scale down hero typography on mobile */
       h1 { font-size: clamp(48px, 12vw, 64px) !important; }
