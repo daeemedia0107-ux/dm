@@ -67,8 +67,12 @@ function Nav({ currentPage, onNav }) {
                 <NavLink key={i}
                   onClick={(e) => {
                     e.preventDefault();
-                    if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
-                    else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (p.id !== 'home') {
+                      onNav(p.id);
+                    } else {
+                      if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
+                      else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                   }}>
                   {p.label}
                 </NavLink>
@@ -109,8 +113,12 @@ function Nav({ currentPage, onNav }) {
               <a key={i} href="#" onClick={(e) => {
                 e.preventDefault();
                 setMenuOpen(false);
-                if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
-                else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (p.id !== 'home') {
+                  onNav(p.id);
+                } else {
+                  if (currentPage !== 'home') onNav('home', p.anchor?.slice(1));
+                  else document.querySelector(p.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
               }} style={{ color: 'var(--fg)', textDecoration: 'none', fontFamily: 'var(--font-sans)', borderBottom: '1px solid var(--border)', paddingBottom: 16 }}>
                 {p.label}
               </a>
